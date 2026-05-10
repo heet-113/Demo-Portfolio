@@ -1,1 +1,1 @@
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-blue?logo=vercel)](https://demo-portfolio-frontend.netlify.app/)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Netlify-blue?logo=netlify)](https://demo-portfolio-frontend.netlify.app/)
