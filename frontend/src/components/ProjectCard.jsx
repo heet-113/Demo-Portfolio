@@ -1,13 +1,37 @@
-import React from 'react';
 import { ExternalLink } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
 import './ProjectCard.css';
+
+const resolveProjectImage = (image) => {
+  if (!image) {
+    return 'https://via.placeholder.com/400x250';
+  }
+
+  const trimmedImage = image.trim();
+
+  if (
+    /^https?:\/\//i.test(trimmedImage) ||
+    trimmedImage.startsWith('//') ||
+    trimmedImage.startsWith('data:') ||
+    trimmedImage.startsWith('blob:')
+  ) {
+    return trimmedImage;
+  }
+
+  const normalizedPath = trimmedImage
+    .replace(/^\.\//, '')
+    .replace(/^\/public\//, '')
+    .replace(/^public\//, '')
+    .replace(/^\//, '');
+
+  return `${import.meta.env.BASE_URL}${normalizedPath}`;
+};
 
 const ProjectCard = ({ project }) => {
   return (
     <div className="project-card glass-card">
       <div className="project-image-wrapper">
-        <img src={project.image || 'https://via.placeholder.com/400x250'} alt={project.title} className="project-image" />
+        <img src={resolveProjectImage(project.image)} alt={project.title} className="project-image" />
       </div>
       
       <div className="project-info">
